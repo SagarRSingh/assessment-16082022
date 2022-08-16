@@ -1,0 +1,55 @@
+
+<style>
+  table{
+    width: 800px;
+    text-align: center;
+  }
+</style>
+
+<table mat-table [dataSource]="studentDataSource" class="mx-auto my-3 mat-elevation-z8">
+  <ng-container matColumnDef="Student ID">
+    <th mat-header-cell *matHeaderCellDef> Student ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.StudentId}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Full Name">
+    <th mat-header-cell *matHeaderCellDef> Full Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.FirstName + ' ' + element.MiddleName + ' ' + element.LastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Class">
+    <th mat-header-cell *matHeaderCellDef> Class </th>
+    <td mat-cell *matCellDef="let element"> {{element.Class}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Roll No">
+    <th mat-header-cell *matHeaderCellDef> Roll No </th>
+    <td mat-cell *matCellDef="let element"> {{element.RollNo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Math">
+    <th mat-header-cell *matHeaderCellDef> Math </th>
+    <td mat-cell *matCellDef="let element" checkMarks [subMarks]="element.Math"> {{element.Math}} </td>
+  </ng-container>
+  <ng-container matColumnDef="English">
+    <th mat-header-cell *matHeaderCellDef> English </th>
+    <td mat-cell *matCellDef="let element" checkMarks [subMarks]="element.English"> {{element.English}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Hindi">
+    <th mat-header-cell *matHeaderCellDef> Hindi </th>
+    <td mat-cell *matCellDef="let element" checkMarks [subMarks]="element.Hindi"> {{element.Hindi}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Science">
+    <th mat-header-cell *matHeaderCellDef> Science </th>
+    <td mat-cell *matCellDef="let element" checkMarks [subMarks]="element.Science"> {{element.Science}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Drawing">
+    <th mat-header-cell *matHeaderCellDef> Drawing </th>
+    <td mat-cell *matCellDef="let element" checkMarks [subMarks]="element.Drawing"> {{element.Drawing}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Total Marks">
+    <th mat-header-cell *matHeaderCellDef> Total Marks </th>
+    <td mat-cell *matCellDef="let element" checkMarks [totalMarks]="element.Math + element.English + element.Hindi + element.Science + element.Drawing"> {{element.Math + element.English + element.Hindi + element.Science + element.Drawing}} </td>
+  </ng-container>
+  
+
+  
+  <tr mat-header-row *matHeaderRowDef="studentDisplayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: studentDisplayColumns;"></tr>
+</table>
